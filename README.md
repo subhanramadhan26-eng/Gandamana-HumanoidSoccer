@@ -21,12 +21,13 @@ graph TD
     %% Odometry Section
     Servo[Data Aktual 12 Servo Kaki] -->|Forward Kinematics| C[Modul Odometry Lokalisasi]
     IMU[Sensor IMU - Yaw] --> C
-    C -->|Koordinat X, Y, θ| B
+    C -->|Koordinat X, Y, theta| B
     C -->|Telemetry Data| GUI[Custom Field GUI Visualizer]
 
     %% Inter-Robot Comm Section
     B -->|Taktik Serang/Bertahan| D[Modul Komunikasi Antar Robot]
-    D <=>|UDP Socket + Custom Header Packet| Robot_Lain[Robot Teman di Lapangan]
+    D --- E[Jaringan UDP Socket]
+    E --- Robot_Lain[Robot Teman di Lapangan]
 
     style A fill:#6bf,stroke:#333,stroke-width:2px
     style C fill:#f96,stroke:#333,stroke-width:2px
