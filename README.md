@@ -12,7 +12,7 @@ Repository ini berisi arsitektur perangkat lunak utama untuk Robot Sepak Bola Hu
 
 Sistem perangkat lunak robot dibagi menjadi 3 modul utama yang saling terintegrasi untuk mendukung autonomi penuh di lapangan pertandingan:
 
-'''mermaid
+```mermaid
 graph TD
     %% GameController Section
     Jury[GameController Juri / Referee Box] -->|WiFi - UDP Broadcast| A[Modul GameController Robot]
@@ -21,13 +21,12 @@ graph TD
     %% Odometry Section
     Servo[Data Aktual 12 Servo Kaki] -->|Forward Kinematics| C[Modul Odometry Lokalisasi]
     IMU[Sensor IMU - Yaw] --> C
-    C -->|Koordinat X, Y, theta| B
+    C -->|Koordinat X, Y, θ| B
     C -->|Telemetry Data| GUI[Custom Field GUI Visualizer]
 
     %% Inter-Robot Comm Section
     B -->|Taktik Serang/Bertahan| D[Modul Komunikasi Antar Robot]
-    D --- E[Jaringan UDP Socket]
-    E --- Robot_Lain[Robot Teman di Lapangan]
+    D <=>|UDP Socket + Custom Header Packet| Robot_Lain[Robot Teman di Lapangan]
 
     style A fill:#6bf,stroke:#333,stroke-width:2px
     style C fill:#f96,stroke:#333,stroke-width:2px
