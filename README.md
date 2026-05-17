@@ -12,6 +12,7 @@ Repository ini berisi arsitektur perangkat lunak utama untuk Robot Sepak Bola Hu
 
 Sistem perangkat lunak robot dibagi menjadi 3 modul utama yang saling terintegrasi untuk mendukung autonomi penuh di lapangan pertandingan:
 
+'''mermaid
 graph TD
     %% GameController Section
     Jury[GameController Juri / Referee Box] -->|WiFi - UDP Broadcast| A[Modul GameController Robot]
